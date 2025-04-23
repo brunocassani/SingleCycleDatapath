@@ -72,17 +72,17 @@ module ControlUnit(input[5:0] opcode,
 				endcase
 			end
             
-        // andi (opcode = 0x0C)
-        6'h0C: begin
+        // addi (opcode = 0x08)
+        6'h08: begin
             reg_dst = 0;
             reg_write = 1;
             alu_src = 1;
-            alu_op = 3'b000; // AND operation
+            alu_op = 3'b010; // AND operation
             branch = 0;
             mem_write = 0;
             mem_to_reg = 0;
-            ImmExtend = 1'b1;  // <-- ZERO EXTENSION
-            $display("\tInstruction 'andi'");
+            ImmExtend = 1'b0;  // <-- IMM EXTENSION
+            $display("\tInstruction 'addi'");
         end
 
         // ori (opcode = 0x0D)
@@ -135,4 +135,3 @@ module ControlUnit(input[5:0] opcode,
 		endcase
 	end
 endmodule
-
