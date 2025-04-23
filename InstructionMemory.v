@@ -14,10 +14,19 @@ module InstructionMemory(input clock,
 				content[i] = 0;
 
 			// Initial values
-			content[0] = 32'h20100001;
-			content[1] = 32'h36108000;	
-			content[2] = 32'h2210ffff;
-        
+            //
+
+            content[0] = 32'h00221820;	// add $3, $1, $2  <- label 'main'
+ 			content[1] = 32'h00221822;	// sub $3, $1, $2
+ 			content[2] = 32'h00221824;	// and $3, $1, $2
+ 			content[3] = 32'h00221825;	// or $3, $1, $2
+ 			content[4] = 32'h0022182a;	// slt $3, $1, $2
+ 			content[5] = 32'h0041182a;	// slt $3, $2, $1
+ 			content[6] = 32'h1140fff9;	// beq $10, $0, main
+			content[7] = 32'h20100001;	//NEW INSTRUCTIONS
+			content[8] = 32'h36108000;	//NEW INSTRUCTIONS
+			content[9] = 32'h2210ffff;	//NEW INSTRUCTIONS
+            content[10] = 32'h1000fff5; // beq $0, $0, main
 		end
 
 	// Read instruction
@@ -29,4 +38,3 @@ module InstructionMemory(input clock,
 		$display("Fetch at PC %08x: instruction %08x", address, instr);
 	
 endmodule
-
