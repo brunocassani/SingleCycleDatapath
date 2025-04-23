@@ -153,7 +153,7 @@ module Datapath(input clock,
 	wire imm_extend_control;  // New control signal (0 = sign extend, 1 = zero extend)
     ImmExtend sign_extend(
 			sign_extend_in,
-            imm_extend_control;
+            		imm_extend_control,
 			sign_extend_out);
 	
 	// Connections for SignExtend
